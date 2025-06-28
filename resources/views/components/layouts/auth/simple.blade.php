@@ -12,7 +12,6 @@
                             <source srcset="{{ asset('images/logo_white.png') }}" media="(prefers-color-scheme: dark)">
                             <img src="{{ asset('images/logo_black.png') }}" alt="Logo" class="w-[220px]">
                         </picture>
-                            {{-- <x-app-logo-icon class="size-9 fill-current text-black dark:text-white" /> --}}
                     </span>
                     <span class="sr-only">{{ config('app.name', 'Laravel') }}</span>
                 </a>
