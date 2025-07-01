@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\User;
+use App\Models\m_kelas;
+
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -19,6 +21,11 @@ new #[Layout('components.layouts.auth')] class extends Component {
     public string $name = '';
     public string $email = '';
 
+    public function kelasOption()
+    {
+        return m_kelas::pluck('name', 'id_kelas')->toArray();
+    }
+
     /**
      * Handle an incoming registration request.
      */
@@ -34,7 +41,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
             'gdrive_email' => ['email'],
             'social_media' => ['nullable', 'string'],
         ]);
-        
+
         session()->put('registration_step1', $validated);
 
         $this->redirect(route('register.choose-program'));
@@ -61,12 +68,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
         <flux:select
             label="Kelas"
             model="class"
-            :options="[
-                '10' => '10',
-                '11' => '11',
-                '12' => '12',
-                'Gap Year' => 'Gap Year',
-            ]"
+            :options="$this->kelasOption()"
             placeholder="Pilih Kelas"
         />
 

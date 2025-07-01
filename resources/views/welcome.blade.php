@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sigma Edu App - Les Online</title>
+    <title>Sigma Edu App</title>
     
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" sizes="any">
@@ -37,6 +37,19 @@
             }
         }
     </script>
+
+    <style>
+        .carousel-item {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .carousel-item.active {
+            opacity: 1;
+        }
+        .h-banner {
+            height: 40rem;
+        }
+    </style>
 </head>
 <body class="bg-light dark:bg-dark text-[#1b1b18] dark:text-white min-h-screen">
     <!-- Header -->
@@ -44,8 +57,8 @@
         <nav class="flex items-center justify-between">
             <div class="flex items-center">
                 <picture>
-                    <source srcset="{{ asset('images/logo_white.png') }}" media="(prefers-color-scheme: dark)">
-                    <img src="{{ asset('images/logo_black.png') }}" alt="Logo" style="width: 130px">
+                    <source srcset="/images/logo_white.png" media="(prefers-color-scheme: dark)">
+                    <img src="/images/logo_black.png" alt="Logo" style="width: 130px">
                 </picture>
             </div>
             
@@ -78,22 +91,64 @@
 
     <!-- Hero Section -->
     <section class="max-w-6xl mx-auto px-6 py-12">
-        <div class="flex flex-col lg:flex-row items-center gap-12">
-            <div class="lg:w-1/2">
-                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Les Online Interaktif untuk Masa Depan Cerah</h1>
+        <div class="flex flex-col lg:flex-row">
+            <div class="lg:w-1/2 flex flex-col justify-center">
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Bimbel Online Interaktif untuk Masa Depan Cerah</h1>
                 <p class="text-lg text-light-secondary dark:text-dark-secondary mb-8">Tingkatkan prestasi akademik dengan bimbingan guru berpengalaman secara online. Fleksibel, terjangkau, dan efektif.</p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#" class="px-6 py-3 bg-primary dark:bg-primary-dark text-white rounded-lg font-medium hover:bg-opacity-90 transition text-center">Mulai Belajar</a>
                     <a href="#" class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition text-center">Lihat Program</a>
                 </div>
             </div>
             <div class="lg:w-1/2">
-                <div class="relative rounded-xl overflow-hidden shadow-xl">
-                    <img src="{{ asset('images/banner.jpg') }}" alt="Online Learning" class="w-full h-auto">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
-                        <div>
-                            <h3 class="text-white text-xl font-semibold">Kelas Interaktif</h3>
-                            <p class="text-gray-200">Belajar dengan metode modern dan menyenangkan</p>
+                <div class="container mx-auto px-4">
+                    <div class="relative max-w-3xl mx-auto">
+                        <!-- Carousel Slides -->
+                        <div class="relative h-banner overflow-hidden rounded-lg shadow-xl">
+                            <!-- Slide 1 -->
+                            <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0" data-carousel-item>
+                                <img src="/images/banner_1.png" class="w-full h-full object-cover" alt="Nature Image 1">
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0" data-carousel-item>
+                                <img src="/images/banner_2.png" class="w-full h-full object-cover" alt="Nature Image 1">
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0" data-carousel-item>
+                                <img src="/images/banner_3.png" class="w-full h-full object-cover" alt="Nature Image 1">
+                            </div>
+                             <!-- Slide 4 -->
+                            <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0" data-carousel-item>
+                                <img src="/images/banner_4.png" class="w-full h-full object-cover" alt="Nature Image 1">
+                            </div>
+                             <!-- Slide 5 -->
+                            <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0" data-carousel-item>
+                                <img src="/images/banner_5.png" class="w-full h-full object-cover" alt="Nature Image 1">
+                            </div>
+                        </div>
+                        
+                        <!-- Slider controls -->
+                        <button type="button" class="absolute top-1/2 left-4 z-30 flex items-center justify-center w-10 h-10 bg-white/30 rounded-full hover:bg-white/50 group focus:outline-none" data-carousel-prev>
+                            <span class="inline-flex items-center justify-center w-6 h-6">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <button type="button" class="absolute top-1/2 right-4 z-30 flex items-center justify-center w-10 h-10 bg-white/30 rounded-full hover:bg-white/50 group focus:outline-none" data-carousel-next>
+                            <span class="inline-flex items-center justify-center w-6 h-6">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        
+                        <!-- Indicators -->
+                        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30 flex space-x-2">
+                            <button type="button" class="w-3 h-3 rounded-full bg-white" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                            <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                            <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                            <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+                            <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
                         </div>
                     </div>
                 </div>
@@ -183,7 +238,7 @@
     <section class="py-16">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Program Les Online</h2>
+                <h2 class="text-3xl font-bold mb-4">Program Bimbel Online</h2>
                 <p class="text-light-secondary dark:text-dark-secondary max-w-2xl mx-auto">Pilih program yang sesuai dengan kebutuhan belajar Anda</p>
             </div>
             
@@ -192,38 +247,11 @@
                 <div class="bg-white dark:bg-dark-bg rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">TKA Kelas 12</h3>
-                        {{-- <p class="text-light-secondary dark:text-dark-secondary mb-4">Terdapat 3 pilihan (Saintek, SOshum, Campuran)</p> --}}
-                        <div class="flex items-center mb-4">
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                            </svg>
-                            <span class="ml-1 text-sm">4.9 (120 review)</span>
-                        </div>
                         <small>mulai dari</small>
                         <div class="mb-4">
                             <span class="text-2xl font-bold">Rp 399.000</span>
-                            <span class="text-sm text-light-secondary dark:text-dark-secondary">/bulan</span>
+                            <span class="text-sm text-light-secondary dark:text-dark-secondary">half price</span>
                         </div>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-center">
-                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                <span>Saintek, Soshum, Campuran</span>
-                            </li>
-                            {{-- <li class="flex items-center">
-                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                <span>2x pertemuan/minggu</span>
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                <span>Durasi 60 menit</span>
-                            </li> --}}
-                        </ul>
                         <a href="#" class="block w-full py-2 px-4 bg-primary dark:bg-primary-dark text-white text-center rounded-lg hover:bg-opacity-90 transition">Daftar Sekarang</a>
                     </div>
                 </div>
@@ -232,26 +260,11 @@
                 <div class="bg-white dark:bg-dark-bg rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Reguler UTBK</h3>
-                        {{-- <p class="text-light-secondary dark:text-dark-secondary mb-4">Terdapat 3 pilihan (Saintek, SOshum, Campuran)</p> --}}
-                        <div class="flex items-center mb-4">
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                            </svg>
-                            <span class="ml-1 text-sm">4.9 (120 review)</span>
-                        </div>
                         <small>mulai dari</small>
                         <div class="mb-4">
-                            <span class="text-2xl font-bold">Rp 699.000</span>
-                            <span class="text-sm text-light-secondary dark:text-dark-secondary">/bulan</span>
+                            <span class="text-2xl font-bold">Rp 459.000</span>
+                            <span class="text-sm text-light-secondary dark:text-dark-secondary">half price</span>
                         </div>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-center">
-                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                <span>-</span>
-                            </li>
-                        </ul>
                         <a href="#" class="block w-full py-2 px-4 bg-primary dark:bg-primary-dark text-white text-center rounded-lg hover:bg-opacity-90 transition">Daftar Sekarang</a>
                     </div>
                 </div>
@@ -260,26 +273,37 @@
                 <div class="bg-white dark:bg-dark-bg rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2">Intensif UTBK</h3>
-                        {{-- <p class="text-light-secondary dark:text-dark-secondary mb-4">Terdapat 3 pilihan (Saintek, SOshum, Campuran)</p> --}}
-                        <div class="flex items-center mb-4">
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                            </svg>
-                            <span class="ml-1 text-sm">4.9 (120 review)</span>
-                        </div>
                         <small>mulai dari</small>
                         <div class="mb-4">
-                            <span class="text-2xl font-bold">Rp 999.000</span>
+                            <span class="text-2xl font-bold">Rp 649.000</span>
+                            <span class="text-sm text-light-secondary dark:text-dark-secondary">half price</span>
+                        </div>
+                        <a href="#" class="block w-full py-2 px-4 bg-primary dark:bg-primary-dark text-white text-center rounded-lg hover:bg-opacity-90 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+
+                <!-- Program4 -->
+                <div class="bg-white dark:bg-dark-bg rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Super Intensif UTBK</h3>
+                        <small>mulai dari</small>
+                        <div class="mb-4">
+                            <span class="text-2xl font-bold">Rp 1.039.000</span>
+                            <span class="text-sm text-light-secondary dark:text-dark-secondary">half price</span>
+                        </div>
+                        <a href="#" class="block w-full py-2 px-4 bg-primary dark:bg-primary-dark text-white text-center rounded-lg hover:bg-opacity-90 transition">Daftar Sekarang</a>
+                    </div>
+                </div>
+
+                <!-- Program5 -->
+                <div class="bg-white dark:bg-dark-bg rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Math Focus</h3>
+                        <small>mulai dari</small>
+                        <div class="mb-4">
+                            <span class="text-2xl font-bold">Rp 299.000</span>
                             <span class="text-sm text-light-secondary dark:text-dark-secondary">/bulan</span>
                         </div>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-center">
-                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                <span>-</span>
-                            </li>
-                        </ul>
                         <a href="#" class="block w-full py-2 px-4 bg-primary dark:bg-primary-dark text-white text-center rounded-lg hover:bg-opacity-90 transition">Daftar Sekarang</a>
                     </div>
                 </div>
@@ -415,8 +439,8 @@
                 <div>
                     <div class="flex items-center mb-4">
                         <picture>
-                            <source srcset="{{ asset('images/logo_white.png') }}" media="(prefers-color-scheme: dark)">
-                            <img src="{{ asset('images/logo_black.png') }}" alt="Logo" style="width: 130px">
+                            <source srcset="/images/logo_white.png" media="(prefers-color-scheme: dark)">
+                            <img src="/images/logo_black.png" alt="Logo" style="width: 130px">
                         </picture>
                     </div>
                     <p class="text-light-secondary dark:text-dark-secondary mb-4">Platform les online terbaik untuk membantu siswa mencapai potensi akademik maksimal.</p>
@@ -460,11 +484,14 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Program</h3>
                     <ul class="space-y-2">
-                        {{-- <li><a href="#" class="text-light-secondary dark:text-dark-secondary hover:text-primary dark:hover:text-primary-dark transition">SD Kelas 1-6</a></li>
-                        <li><a href="#" class="text-light-secondary dark:text-dark-secondary hover:text-primary dark:hover:text-primary-dark transition">SMP Kelas 7-9</a></li>
-                        <li><a href="#" class="text-light-secondary dark:text-dark-secondary hover:text-primary dark:hover:text-primary-dark transition">SMA Kelas 10-12</a></li>
-                        <li><a href="#" class="text-light-secondary dark:text-dark-secondary hover:text-primary dark:hover:text-primary-dark transition">Persiapan UTBK</a></li>
-                        <li><a href="#" class="text-light-secondary dark:text-dark-secondary hover:text-primary dark:hover:text-primary-dark transition">Les Privat</a></li> --}}
+                    {{-- @foreach($programs as $id => $name)
+                        <li>
+                            <a href="#" 
+                            class="text-light-secondary dark:text-dark-secondary hover:text-primary dark:hover:text-primary-dark transition">
+                            {{ $name }}
+                            </a>
+                        </li>
+                    @endforeach    --}}
                     </ul>
                 </div>
                 
@@ -506,7 +533,63 @@
         </div>
     </footer>
 
-    <!-- Dark mode toggle script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const items = document.querySelectorAll('[data-carousel-item]');
+            const prevButton = document.querySelector('[data-carousel-prev]');
+            const nextButton = document.querySelector('[data-carousel-next]');
+            const indicators = document.querySelectorAll('[data-carousel-slide-to]');
+            
+            let currentIndex = 0;
+            const totalItems = items.length;
+            
+            function updateCarousel() {
+                items.forEach((item, index) => {
+                    item.classList.remove('translate-x-0');
+                    item.classList.add('translate-x-full');
+                    
+                    if (index === currentIndex) {
+                        item.classList.remove('translate-x-full');
+                        item.classList.add('translate-x-0');
+                    }
+                });
+                
+                indicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.remove('bg-white/50');
+                        indicator.classList.add('bg-white');
+                    } else {
+                        indicator.classList.remove('bg-white');
+                        indicator.classList.add('bg-white/50');
+                    }
+                });
+            }
+            
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalItems;
+                updateCarousel();
+            }
+            
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                updateCarousel();
+            }
+            
+            // Event listeners
+            nextButton.addEventListener('click', nextSlide);
+            prevButton.addEventListener('click', prevSlide);
+            
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+            
+            // Auto slide (opsional)
+            setInterval(nextSlide, 2000);
+        });
+    </script>
     <script>
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');

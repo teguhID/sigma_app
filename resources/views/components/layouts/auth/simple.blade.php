@@ -9,8 +9,8 @@
                 <a href="{{ route('home') }}" class="flex flex-col items-center gap-2 font-medium" wire:navigate>
                     <span class="flex mb-1 items-center justify-center rounded-md">
                         <picture>
-                            <source srcset="{{ asset('images/logo_white.png') }}" media="(prefers-color-scheme: dark)">
-                            <img src="{{ asset('images/logo_black.png') }}" alt="Logo" class="w-[220px]">
+                            <source srcset="/images/logo_white.png" media="(prefers-color-scheme: dark)">
+                            <img src="/images/logo_black.png" alt="Logo" class="w-[220px]">
                         </picture>
                     </span>
                     <span class="sr-only">{{ config('app.name', 'Laravel') }}</span>
@@ -21,6 +21,7 @@
             </div>
         </div>
         @fluxScripts
-        @livewireScripts
+        <script src="/vendor/livewire/livewire.js?id=df3a17f2"></script>
+        {{-- @livewireScripts --}}
     </body>
 </html>
