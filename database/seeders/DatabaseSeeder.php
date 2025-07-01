@@ -14,12 +14,14 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            MRoleSeeder::class,
             UserSeeder::class,
             MKelasSeeder::class,
             MProgramSeeder::class,
             MSubProgramSeeder::class,
             MProgramDurationSeeder::class,
             MConfigProgramDurationSeeder::class,
+            MStatusBayarSeeder::class,
             // seeder lainnya...
         ]);
     }

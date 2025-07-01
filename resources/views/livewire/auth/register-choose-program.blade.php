@@ -75,6 +75,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
             $this->id_program = $value;
             
             if (!empty($this->id_program) && ($this->id_program == 1 || $this->id_program === '1')) {
+                $this->programDurationOptions = [];
                 $this->subProgramOptions = $this->subProgramOption($this->id_program);
             } else {
                 $this->subProgramOptions = [];
@@ -86,6 +87,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
         if ($property === 'sub_program') {
             $this->id_sub_program = '';
             $this->duration = '';
+            $this->totalHarga = 0;
 
             $this->id_sub_program = $value;
 

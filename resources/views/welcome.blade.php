@@ -523,7 +523,7 @@
             </div>
             
             <div class="border-t border-gray-200 dark:border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-light-secondary dark:text-dark-secondary mb-4 md:mb-0">© 2023 Sigma Edu. All rights reserved.</p>
+                <p class="text-light-secondary dark:text-dark-secondary mb-4 md:mb-0">© 2025 Sigma Edu. All rights reserved.</p>
                 <div class="flex space-x-6">
                     <a href="#" class="text-light-secondary dark:text-dark-secondary hover:text-primary dark:hover:text-primary-dark transition">Privacy Policy</a>
                     <a href="#" class="text-light-secondary dark:text-dark-secondary hover:text-primary dark:hover:text-primary-dark transition">Terms of Service</a>
