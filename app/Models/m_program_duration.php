@@ -24,7 +24,7 @@ class m_program_duration extends Model
     /**
      * Relasi ke config program duration
      */
-    public function configDurations()
+    public function config_durations()
     {
         return $this->hasMany(m_config_program_duration::class, 'id_program_duration', 'id_program_duration');
     }

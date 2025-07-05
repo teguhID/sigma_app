@@ -11,15 +11,15 @@ use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 
 new #[Layout('components.layouts.auth')] class extends Component {
-    public string $class = '';
-    public string $dream_campus = '';
-    public string $social_media = '';
-    public string $whatsapp = '';
-    public string $zoom_name = '';
-    public string $gdrive_email = '';
-        
-    public string $name = '';
+    public string $nama = '';    
+    public string $kelas = '';
+    public string $jurusan_kampus_favorit = '';
+    public string $jam_belajar_favorit = '';
+    public string $sosmed = '';
+    public string $no_wa = '';
+    public string $nama_akun_zoom = '';
     public string $email = '';
+    public string $password = '';
 
     public function kelasOption()
     {
@@ -32,14 +32,18 @@ new #[Layout('components.layouts.auth')] class extends Component {
     public function next(): void
     {
         $validated = $this->validate([
-            'name' => ['string', 'max:255'],
-            'email' => ['string', 'lowercase', 'email', 'max:255'],
-            'class' => ['string'],
-            'dream_campus' => ['string'],
-            'whatsapp' => ['string'],
-            'zoom_name' => ['string'],
-            'gdrive_email' => ['email'],
-            'social_media' => ['nullable', 'string'],
+            'nama' => ['required', 'string', 'max:255'],
+            'kelas' => ['required', 'string'],
+            'jurusan_kampus_favorit' => ['string'],
+            'jam_belajar_favorit' => ['string'],
+            'sosmed' => ['string'],
+            'no_wa' => ['required', 'string', 'regex:/^(\+?\d{10,15})$/',],
+            'nama_akun_zoom' => ['required', 'string'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255'],
+            'password' => ['required', 'string', 'min:8'],
+        ],
+        [
+            'no_wa.regex' => 'Format nomor WhatsApp tidak valid. Contoh: 08123456789 atau +628123456789',
         ]);
 
         session()->put('registration_step1', $validated);
@@ -54,34 +58,55 @@ new #[Layout('components.layouts.auth')] class extends Component {
     <x-auth-session-status class="text-center" :status="session('status')" />
 
     <form wire:submit="next" class="flex flex-col gap-6">
+        
+        <!-- 8. Email untuk akses Google Drive -->
+        <flux:input
+            wire:model="email"
+            label="Email *"
+            type="email"
+            placeholder="email@gmail.com"
+        />
+
+        <!-- 8. Email untuk akses Google Drive -->
+        <flux:input
+            wire:model="password"
+            :label="__('Password *')"
+            type="password"
+            autocomplete="current-password"
+            :placeholder="__('Password')"
+            viewable
+        />
+        
+        <hr>
+
         <!-- 1. Nama Lengkap -->
         <flux:input
-            wire:model="name"
-            label="Nama Lengkap"
+            wire:model="nama"
+            label="Nama Lengkap *"
             type="text"
             autofocus
-            autocomplete="name"
+            autocomplete="nama"
             placeholder="Nama lengkap"
         />
 
         <!-- 2. Kelas -->
         <flux:select
-            label="Kelas"
-            model="class"
+            label="Kelas *"
+            wire:model="kelas"
             :options="$this->kelasOption()"
             placeholder="Pilih Kelas"
         />
 
         <!-- 3. Jurusan & Kampus Impian -->
         <flux:input
-            wire:model="dream_campus"
+            wire:model="jurusan_kampus_favorit"
             label="Jurusan & Kampus Impian"
             type="text"
             placeholder="Contoh: Teknik Informatika - ITB"
         />
 
-        <!-- 4. Waktu Belajar Favorit -->
         <flux:select
+            wire:model="jam_belajar_favorit"
             label="Kamu suka belajar jam berapa?"
             description="jadwal tidak fleksibel, pertanyaan ini hanya untuk survei"
             model="class"
@@ -98,39 +123,30 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
         <!-- 5. Sosial Media (opsional) -->
         <flux:input
-            wire:model="social_media"
-            label="Sosial Media (opsional)"
+            wire:model="sosmed"
+            label="Sosial Media"
             type="text"
             placeholder="@username / link akun"
         />
 
         <!-- 6. Nomor WhatsApp -->
         <flux:input
-            wire:model="whatsapp"
-            label="Nomor WhatsApp"
+            wire:model="no_wa"
+            label="Nomor WhatsApp *"
             type="tel"
             placeholder="08xxxxxxxxxx"
         />
 
         <!-- 7. Nama di Akun Zoom -->
         <flux:input
-            wire:model="zoom_name"
-            label="Nama di Akun Zoom"
+            wire:model="nama_akun_zoom"
+            label="Nama di Akun Zoom *"
             type="text"
             placeholder="Sesuai akun Zoom kamu"
         />
 
-        <!-- 8. Email untuk akses Google Drive -->
-        <flux:input
-            wire:model="gdrive_email"
-            label="Email untuk Akses Google Drive"
-            type="email"
-            placeholder="email@gmail.com"
-        />
-
-
         <!-- Tombol Submit -->
-        <div class="flex items-center justify-end">
+        <div class="flex items-center justify-end mt-6">
             <flux:button type="submit" variant="primary" class="w-full">
                 Lanjut
             </flux:button>

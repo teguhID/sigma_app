@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             MProgramDurationSeeder::class,
             MConfigProgramDurationSeeder::class,
             MStatusBayarSeeder::class,
+            MKodeKuponSeeder::class,
             // seeder lainnya...
         ]);
     }

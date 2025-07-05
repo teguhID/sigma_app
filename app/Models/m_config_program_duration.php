@@ -36,7 +36,7 @@ class m_config_program_duration extends Model
     /**
      * Relasi ke Program
      */
-    public function subProgram()
+    public function sub_program()
     {
         return $this->belongsTo(m_sub_program::class, 'id_sub_program', 'id_sub_program');
     }
@@ -44,7 +44,7 @@ class m_config_program_duration extends Model
     /**
      * Relasi ke Program Duration
      */
-    public function programDuration()
+    public function program_duration()
     {
         return $this->belongsTo(m_program_duration::class, 'id_program_duration', 'id_program_duration');
     }

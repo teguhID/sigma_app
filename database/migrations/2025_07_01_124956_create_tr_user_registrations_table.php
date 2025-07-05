@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tr_user_registration', function (Blueprint $table) {
-            $table->id('id_user_registration');
+            $table->string('id_user_registration')->primary();
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_user_profile');
             $table->unsignedBigInteger('id_kelas');
@@ -21,11 +21,11 @@ return new class extends Migration
             $table->unsignedBigInteger('id_program_duration');
             $table->unsignedBigInteger('id_status_bayar');
             $table->string('kode_voucher', 50)->nullable();
-            $table->decimal('total_biaya', 12, 2);
+            $table->integer('total_biaya');
             $table->timestamp('payment_deadline')->nullable();
             $table->timestamps();
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
 
             // Foreign keys
             $table->foreign('id_user')->references('id')->on('users');

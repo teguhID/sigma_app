@@ -21,7 +21,12 @@
             </div>
         </div>
         @fluxScripts
-        <script src="/vendor/livewire/livewire.js?id=df3a17f2"></script>
-        {{-- @livewireScripts --}}
+        
+        @if (config('app.env') == 'local')
+            @livewireScripts
+        @else
+            <script src="/vendor/livewire/livewire.js?id=df3a17f2"></script>
+        @endif
+
     </body>
 </html>

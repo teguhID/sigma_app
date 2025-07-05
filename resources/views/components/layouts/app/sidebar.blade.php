@@ -2,6 +2,15 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
     <head>
         @include('partials.head')
+
+        @if (config('app.env') == 'local')
+            @livewireScripts
+        @else
+            <script src="/vendor/livewire/livewire.js?id=df3a17f2"></script>
+        @endif
+
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
     </head>
     <body class="min-h-screen bg-white dark:bg-zinc-800">
         <flux:sidebar sticky stashable class="border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
@@ -17,24 +26,16 @@
                 </flux:navlist.group>
             </flux:navlist>
 
-            <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Siswa')" class="grid">
-                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('siswa.regist')" wire:navigate>{{ __('Siswa Regist') }}</flux:navlist.item>
-                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('siswa.terdaftar')" wire:navigate>{{ __('Siswa Terdaftar') }}</flux:navlist.item>
-                </flux:navlist.group>
-            </flux:navlist>
+            @if (auth()->user()->id_role == 2)
+                <flux:navlist variant="outline">
+                    <flux:navlist.group :heading="__('Siswa')" class="grid">
+                        <flux:navlist.item icon="building-library" :href="route('student.kelas')" :current="request()->routeIs('student.kelas')" wire:navigate>{{ __('Kelas') }}</flux:navlist.item>
+                        <flux:navlist.item icon="building-library" :href="route('student.kelas')" :current="request()->routeIs('student.kelas')" wire:navigate>{{ __('Kelas') }}</flux:navlist.item>  
+                    </flux:navlist.group>
+                </flux:navlist>
+            @endif
 
             <flux:spacer />
-
-            <flux:navlist variant="outline">
-                {{-- <flux:navlist.item icon="folder-git-2" href="https://github.com/laravel/livewire-starter-kit" target="_blank">
-                {{ __('Repository') }}
-                </flux:navlist.item>
-
-                <flux:navlist.item icon="book-open-text" href="https://laravel.com/docs/starter-kits#livewire" target="_blank">
-                {{ __('Documentation') }}
-                </flux:navlist.item> --}}
-            </flux:navlist>
 
             <!-- Desktop User Menu -->
             <flux:dropdown class="hidden lg:block" position="bottom" align="start">
@@ -131,8 +132,10 @@
                 </flux:menu>
             </flux:dropdown>
         </flux:header>
-
+         
         {{ $slot }}
+        
+        <script src="/js/supp.js"></script>
 
         @fluxScripts
     </body>

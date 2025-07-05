@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('nama_akun_zoom', 100);
             $table->string('email', 100);
             $table->timestamps();
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
 
             // Foreign keys
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');

@@ -11,10 +11,11 @@ class tr_user_registration extends Model
 
     protected $table = 'tr_user_registration';
     protected $primaryKey = 'id_user_registration';
-    public $incrementing = true;
-    protected $keyType = 'int';
+    public $incrementing = false;
+    protected $keyType = 'string';
 
     protected $fillable = [
+        'id_user_registration',
         'id_user',
         'id_user_profile',
         'id_kelas',
@@ -66,7 +67,7 @@ class tr_user_registration extends Model
     /**
      * Relasi ke Sub Program
      */
-    public function subProgram()
+    public function sub_program()
     {
         return $this->belongsTo(m_sub_program::class, 'id_sub_program', 'id_sub_program');
     }
@@ -74,7 +75,7 @@ class tr_user_registration extends Model
     /**
      * Relasi ke Program Duration
      */
-    public function programDuration()
+    public function program_duration()
     {
         return $this->belongsTo(m_program_duration::class, 'id_program_duration', 'id_program_duration');
     }
@@ -82,8 +83,16 @@ class tr_user_registration extends Model
     /**
      * Relasi ke Program Duration
      */
-    public function statusBayar()
+    public function status_bayar()
     {
         return $this->belongsTo(m_status_bayar::class, 'id_status_bayar', 'id_status_bayar');
+    }
+
+    /**
+     * Relasi ke Kode Voucher
+     */
+    public function kode_kupon()
+    {
+        return $this->hasMany(tr_registration_kupon::class, 'id_user_registration', 'id_user_registration');
     }
 }

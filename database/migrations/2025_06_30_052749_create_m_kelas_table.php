@@ -16,8 +16,8 @@ return new class extends Migration
             $table->char('name', 255);
             $table->text('desc')->nullable();
             $table->timestamps(); // created_at & updated_at otomatis
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
         });
     }
 

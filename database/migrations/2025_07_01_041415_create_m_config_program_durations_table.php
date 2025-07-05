@@ -20,8 +20,8 @@ return new class extends Migration
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
             $table->timestamps(); // created_at & updated_at otomatis
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
 
             $table->foreign('id_program')->references('id_program')->on('m_program')->onDelete('cascade');
             $table->foreign('id_sub_program')->references('id_sub_program')->on('m_sub_program')->onDelete('set null'); // jika sub program dihapus, set null

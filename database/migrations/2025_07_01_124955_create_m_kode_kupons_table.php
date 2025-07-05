@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('m_sub_program', function (Blueprint $table) {
-            $table->bigIncrements('id_sub_program'); // Primary key
-            $table->unsignedBigInteger('id_program'); // FK ke m_program
+        Schema::create('m_kode_kupon', function (Blueprint $table) {
+            $table->bigIncrements('id_kode_kupon');
             $table->char('name', 255);
+            $table->char('kode', 255);
+            $table->integer('persentase_diskon');
             $table->text('desc')->nullable();
-            $table->timestamps(); // created_at & updated_at otomatis
+            $table->timestamps();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
-
-            // Tambahkan foreign key constraint
-            $table->foreign('id_program')->references('id_program')->on('m_program')->onDelete('cascade'); // jika program dihapus, sub-program ikut terhapus
         });
     }
 
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('m_sub_program');
+        Schema::dropIfExists('m_kode_kupon');
     }
 };

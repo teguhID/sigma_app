@@ -60,7 +60,7 @@ class ProfileUpdateTest extends TestCase
 
         $this->actingAs($user);
 
-        $response = Volt::test('settings.delete-user-form')
+        $response = Volt::test('dashboard.settings.delete-user-form')
             ->set('password', 'password')
             ->call('deleteUser');
 
@@ -78,7 +78,7 @@ class ProfileUpdateTest extends TestCase
 
         $this->actingAs($user);
 
-        $response = Volt::test('settings.delete-user-form')
+        $response = Volt::test('dashboard.settings.delete-user-form')
             ->set('password', 'wrong-password')
             ->call('deleteUser');
 
