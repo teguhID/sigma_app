@@ -26,10 +26,17 @@
                 </flux:navlist.group>
             </flux:navlist>
 
+            @if (auth()->user()->id_role == 1)
+                <flux:navlist variant="outline">
+                    <flux:navlist.group :heading="__('Siswa')" class="grid">
+                        <flux:navlist.item icon="building-library" :href="route('student.register')" :current="request()->routeIs('student.register')" wire:navigate>{{ __('Register') }}</flux:navlist.item>  
+                    </flux:navlist.group>
+                </flux:navlist>
+            @endif
+
             @if (auth()->user()->id_role == 2)
                 <flux:navlist variant="outline">
                     <flux:navlist.group :heading="__('Siswa')" class="grid">
-                        <flux:navlist.item icon="building-library" :href="route('student.kelas')" :current="request()->routeIs('student.kelas')" wire:navigate>{{ __('Kelas') }}</flux:navlist.item>
                         <flux:navlist.item icon="building-library" :href="route('student.kelas')" :current="request()->routeIs('student.kelas')" wire:navigate>{{ __('Kelas') }}</flux:navlist.item>  
                     </flux:navlist.group>
                 </flux:navlist>

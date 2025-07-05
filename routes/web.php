@@ -20,6 +20,7 @@ Route::middleware(['auth'])->group(function () {
 
     Volt::route('dashboard/', 'dashboard.index')->name('dashboard');
     Volt::route('student/kelas', 'dashboard.student.kelas')->name('student.kelas');
+    Volt::route('student/register', 'dashboard.student.register')->name('student.register');
 
     Route::redirect('settings', 'settings/profile');
 

@@ -43,7 +43,7 @@ class tr_user_registration extends Model
     /**
      * Relasi ke User Profile
      */
-    public function userProfile()
+    public function user_profile()
     {
         return $this->belongsTo(m_user_profile::class, 'id_user_profile', 'id_user_profile');
     }

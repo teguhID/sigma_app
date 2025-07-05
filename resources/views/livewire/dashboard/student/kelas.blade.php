@@ -229,7 +229,9 @@ new class extends Component {
         if (dataTableInstance) {
             dataTableInstance.destroy(); // Destroy existing instance if it exists
         }
-        dataTableInstance = $('#summary').DataTable();
+        dataTableInstance = $('#summary').DataTable({
+            scrollX: true
+        });
     }
 
     $(document).ready(function () {

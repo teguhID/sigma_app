@@ -66,22 +66,24 @@
                 @if (Route::has('login'))
                     <nav class="flex items-center gap-4">
                         @auth
-                            <a 
+                            <a
                                 href="{{ url('/dashboard') }}"
                                 class="px-4 py-2 rounded-md bg-[#2596be] dark:bg-[#44ade5] text-white hover:bg-opacity-90 transition-colors"
                             >
                                 Dashboard
                             </a>
                         @else
-                            <a href="{{ route('login') }}" class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition text-center">Login</a>
-                            @if (Route::has('register'))
-                                <a 
-                                    href="{{ route('register') }}"
-                                    class="px-4 py-2 rounded-md bg-[#2596be] dark:bg-[#44ade5] text-white hover:bg-opacity-90 transition-colors"
-                                >
-                                    Daftar Sekarang
-                                </a>
-                            @endif
+                            <div class="flex flex-col sm:flex-row gap-3"> {{-- Added flex container and gap --}}
+                                <a href="{{ route('login') }}" class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition text-center flex-grow">Login</a> {{-- Added flex-grow --}}
+                                @if (Route::has('register'))
+                                    <a
+                                        href="{{ route('register') }}"
+                                        class="px-4 py-2 rounded-md bg-[#2596be] dark:bg-[#44ade5] text-white hover:bg-opacity-90 transition-colors text-center flex-grow" {{-- Added text-center and flex-grow --}}
+                                    >
+                                        Daftar Sekarang
+                                    </a>
+                                @endif
+                            </div>
                         @endauth
                     </nav>
                 @endif
@@ -90,39 +92,32 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="max-w-6xl mx-auto px-6 py-12">
+    <section class="max-w-6xl mx-auto px-6 pb-12 pt-6">
         <div class="flex flex-col lg:flex-row">
-            <div class="lg:w-1/2 flex flex-col justify-center">
-                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Bimbel Online Interaktif untuk Masa Depan Cerah</h1>
-                <p class="text-lg text-light-secondary dark:text-dark-secondary mb-8">Tingkatkan prestasi akademik dengan bimbingan guru berpengalaman secara online. Fleksibel, terjangkau, dan efektif.</p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#" class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition text-center">Lihat Program</a>
-                </div>
-            </div>
             <div class="lg:w-1/2">
-                <div class="container mx-auto px-4">
+                <div class="container mx-auto">
                     <div class="relative max-w-3xl mx-auto">
                         <!-- Carousel Slides -->
                         <div class="relative h-banner overflow-hidden rounded-lg shadow-xl">
                             <!-- Slide 1 -->
                             <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0" data-carousel-item>
-                                <img src="/images/banner_1.png" class="w-full h-full object-cover" alt="Nature Image 1">
+                                <img src="/images/banner_1.png" class="w-full h-full object-contain" alt="Nature Image 1">
                             </div>
                             <!-- Slide 2 -->
                             <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0" data-carousel-item>
-                                <img src="/images/banner_2.png" class="w-full h-full object-cover" alt="Nature Image 1">
+                                <img src="/images/banner_2.png" class="w-full h-full object-contain" alt="Nature Image 1">
                             </div>
                             <!-- Slide 3 -->
                             <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0" data-carousel-item>
-                                <img src="/images/banner_3.png" class="w-full h-full object-cover" alt="Nature Image 1">
+                                <img src="/images/banner_3.png" class="w-full h-full object-contain" alt="Nature Image 1">
                             </div>
                              <!-- Slide 4 -->
                             <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0" data-carousel-item>
-                                <img src="/images/banner_4.png" class="w-full h-full object-cover" alt="Nature Image 1">
+                                <img src="/images/banner_4.png" class="w-full h-full object-contain" alt="Nature Image 1">
                             </div>
                              <!-- Slide 5 -->
                             <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0" data-carousel-item>
-                                <img src="/images/banner_5.png" class="w-full h-full object-cover" alt="Nature Image 1">
+                                <img src="/images/banner_5.png" class="w-full h-full object-contain" alt="Nature Image 1">
                             </div>
                         </div>
                         
@@ -151,6 +146,13 @@
                             <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="lg:w-1/2 flex flex-col justify-center m-5 ">
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Bimbel Online Interaktif untuk Masa Depan Cerah</h1>
+                <p class="text-lg text-light-secondary dark:text-dark-secondary mb-8">Tingkatkan prestasi akademik dengan bimbingan guru berpengalaman secara online. Fleksibel, terjangkau, dan efektif.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#" class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition text-center">Lihat Program</a>
                 </div>
             </div>
         </div>
@@ -587,7 +589,7 @@
             });
             
             // Auto slide (opsional)
-            setInterval(nextSlide, 2000);
+            setInterval(nextSlide, 5000);
         });
     </script>
     <script>
